@@ -60,26 +60,20 @@ charset = string.ascii_letters + string.digits + "!@#$%^&*"
 SCrack generates multiple attack vectors combining the known prefix with different suffix lengths and character sets. The system starts with shorter, probable combinations and expands to longer suffixes with comprehensive character sets. Each vector is prioritized by computational efficiency, automatically skipping those exceeding the maximum search space.
 
 ```mermaid
-mindmap
-  root((SCrack Flow))
-    1. Start
-      Load Configuration
-      TARGET_HASH + TARGET_PREFIX
-    2. Initialize
-      Create CryptographicAnalyzer
-      Check GPU/CPU Resources
-    3. Generate Vectors
-      Create Attack Patterns
-      Sort by Priority
-    4. Process Vector
-      Generate Candidates
-      prefix + suffix combinations
-    5. Hash & Compare
-      SHA1(candidate)
-      Compare with target
-    6. Result
-      Found: Return Password
-      Not Found: Next Vector
+flowchart LR
+    A[User Input] --> B[TARGET_HASH & TARGET_PREFIX]
+    B --> C[Code Starts]
+    C --> D[Initialize Analyzer]
+    D --> E[Check GPU/CPU]
+    E --> F[Generate Attack Vectors]
+    F --> G[Process Each Vector]
+    G --> H[Generate Candidates]
+    H --> I[Hash & Compare]
+    I --> J{Match Found?}
+    J -->|Yes| K[Return Password]
+    J -->|No| L{More Vectors?}
+    L -->|Yes| G
+    L -->|No| M[Analysis Complete]
 ```
 
 ## Example Output
