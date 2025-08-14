@@ -12,10 +12,8 @@ import multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import ctypes
 
-# GPU acceleration imports
 try:
     import cupy as cp
-    # Check for a valid GPU device
     if cp.cuda.runtime.getDeviceCount() > 0:
         GPU_AVAILABLE = True
         GPU_TYPE = "CuPy"
@@ -40,11 +38,10 @@ BATCH_SIZE = 100000  # Process batches for better performance
 GPU_BATCH_SIZE = 40000000  # Larger batches for GPU processing (e.g., 40 million)
 NUM_WORKERS = mp.cpu_count()  # Use all available CPU cores
 
-# Global atomic flag for early stopping
+
 stop_flag = mp.Value(ctypes.c_bool, False)
 
-# --- NEW: CUDA C++ Kernel for SHA-1 Hashing ---
-# This kernel is compiled by CuPy at runtime. Each GPU thread runs this code in parallel.
+
 sha1_kernel_code = r'''
 extern "C" {
     // Device function to rotate left
