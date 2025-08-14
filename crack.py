@@ -30,8 +30,8 @@ except ImportError:
     print("CuPy not found - GPU acceleration not available - using CPU with multiprocessing")
 
 # Target Configuration
-TARGET_HASH = "eb527fdfdc0320f3d2d5f9684f613647dc001dcd" # Hash to decrypt - change this value to target a different hash
-TARGET_PREFIX = "@Aika" # Target prefix - only put the showed password prefix here dont put the * on
+TARGET_HASH = "PUT YOUR SHA1 HASH HERE" # Hash to decrypt - change this value to target a different hash
+TARGET_PREFIX = "PUT YOUR PASSOWRD WHAT YOU KNEW HALF OF IT" # Target prefix - only put the showed password prefix here dont put the * on
 
 # Analysis Parameters
 MAX_SEARCH_SPACE = 100000000000  # Increased for longer passwords
